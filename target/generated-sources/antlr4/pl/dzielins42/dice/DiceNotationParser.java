@@ -75,6 +75,19 @@ public class DiceNotationParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
+
+
+	    private java.util.Random _random = new java.util.Random();
+
+	    public static int eval(String expression) {
+	        ANTLRInputStream in = new ANTLRInputStream(expression);
+	        DiceNotationLexer lexer = new DiceNotationLexer(in);
+	        CommonTokenStream tokens = new CommonTokenStream(lexer);
+	        DiceNotationParser parser = new DiceNotationParser(tokens);
+	        return parser.eval().value; 
+	    }
+
+
 	public DiceNotationParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
@@ -156,11 +169,16 @@ public class DiceNotationParser extends Parser {
 			setState(9);
 			((BaseRollContext)_localctx).b = match(Number);
 
-											int x, y;
-											x = Integer.parseInt((((BaseRollContext)_localctx).a!=null?((BaseRollContext)_localctx).a.getText():null));
-											y = Integer.parseInt((((BaseRollContext)_localctx).b!=null?((BaseRollContext)_localctx).b.getText():null));
-											((BaseRollContext)_localctx).value =  x*y;
-										
+			        int x, y, v;
+			        int sum = 0;
+			        x = Integer.parseInt((((BaseRollContext)_localctx).a!=null?((BaseRollContext)_localctx).a.getText():null));
+			        y = Integer.parseInt((((BaseRollContext)_localctx).b!=null?((BaseRollContext)_localctx).b.getText():null));
+			        for (int i = 0; i < x; i++) {
+			            v = _random.nextInt(y) + 1;
+			            sum += v;
+			        }
+			        ((BaseRollContext)_localctx).value =  sum;
+			    
 			}
 		}
 		catch (RecognitionException re) {

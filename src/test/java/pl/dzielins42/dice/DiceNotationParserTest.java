@@ -1,8 +1,5 @@
 package pl.dzielins42.dice;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -26,14 +23,19 @@ public class DiceNotationParserTest extends TestCase {
         return new TestSuite(DiceNotationParserTest.class);
     }
 
-    public void testSimpleRoll() {
-        ANTLRInputStream in = new ANTLRInputStream("1d6");
-        DiceNotationLexer lexer = new DiceNotationLexer(in);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        DiceNotationParser parser = new DiceNotationParser(tokens);
-        int value = parser.eval().value;
-        System.out.println(value);
-        assertEquals(value, 6);
+    public void testSingleD2Roll() {
+        int value = DiceNotationParser.eval("1d2");
+        assertTrue(value >= 1 && value <= 2);
+    }
+
+    public void testSingleD6Roll() {
+        int value = DiceNotationParser.eval("1d6");
+        assertTrue(value >= 1 && value <= 6);
+    }
+
+    public void testSingleD1000Roll() {
+        int value = DiceNotationParser.eval("1d1000");
+        assertTrue(value >= 1 && value <= 1000);
     }
 
 }
