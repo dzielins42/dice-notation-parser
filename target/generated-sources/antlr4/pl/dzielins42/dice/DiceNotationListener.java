@@ -19,6 +19,46 @@ public interface DiceNotationListener extends ParseTreeListener {
 	 */
 	void exitEval(DiceNotationParser.EvalContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link DiceNotationParser#intExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntExpr(DiceNotationParser.IntExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DiceNotationParser#intExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntExpr(DiceNotationParser.IntExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DiceNotationParser#intAdditionExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntAdditionExpr(DiceNotationParser.IntAdditionExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DiceNotationParser#intAdditionExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntAdditionExpr(DiceNotationParser.IntAdditionExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DiceNotationParser#intMultiplyExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntMultiplyExpr(DiceNotationParser.IntMultiplyExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DiceNotationParser#intMultiplyExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntMultiplyExpr(DiceNotationParser.IntMultiplyExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link DiceNotationParser#intAtomExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntAtomExpr(DiceNotationParser.IntAtomExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link DiceNotationParser#intAtomExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntAtomExpr(DiceNotationParser.IntAtomExprContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link DiceNotationParser#baseRoll}.
 	 * @param ctx the parse tree
 	 */
